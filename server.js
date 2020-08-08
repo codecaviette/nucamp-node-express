@@ -10,13 +10,13 @@ app.use(morgan('dev'));                  // This will configure morgan to log th
 app.use(bodyParser.json());              // Activate body-parser middleware to handle JSON-formatted data so that when server receives request with JSON formatted data in the body, the body-parser middleware will handle parsing that data into properties of the request object so we can access that data more easily. 
 
 // This will apply to any/all HTTP verbs so we don't have to repeat this for each endpoint (DRY)
-app.all('/campsites', (req, res, next) => {                 // Routing method "all" is a catch-all for all HTTP verbs, so anytime any HTTP request is made for this path (/campsites), this method will run and then move on to the next routing method bc the "next" keyword is used at the end of this code block. First param is path; 2nd param is a callback
+app.all('/campsites', (req, res, next) => {                 // Express routing method "all" is a catch-all for all HTTP verbs, so anytime any HTTP request is made for this path (/campsites), this method will run and then move on to the next routing method bc the "next" keyword is used at the end of this code block. First param is path; 2nd param is a callback
     res.statusCode = 200;                                   // This means the response object's status code will be 200
     res.setHeader('Content-type', 'text/plain');            // This means we'll send back plain text in the response body 
     next();                                                 // Calling the "next" function passes control to the application routing to the next relevant routing method after this one; otherwise, it would just stop here and not go any further
 });
 
-// Add support for 4 endpoints for path '/campsites' :
+// Add support for 4 endpoints for path '/campsites' using Express routing methods :
 app.get('/campsites', (req, res) => {                       // Don't need to include "next" as a param of 2nd argument since we do not want to process any more routing methods after this one.
     res.end(`Will send all the campsites to you`);          // Bc app.all method already set the response object's status code and content type, we do not need to include that here, just the res.end method to send a message back to client
 });
