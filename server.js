@@ -4,8 +4,8 @@ const express = require('express');                 // Here, we're stating that 
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const campsiteRouter = require('./routes/campsiteRouter');          // We're essentially importing the campsiteRouter module by using its filepath
-const promotionRouter = require('./routes/promotionRouter');
-const partnerRouter = require('./routes/partnerRouter');
+const promotionRouter = require('./routes/promotionRouter');        // Essentially importing promotionRouter
+const partnerRouter = require('./routes/partnerRouter');            // Essentially importing partnerRouter
 
 const hostname = 'localhost';
 const port = 3000;
